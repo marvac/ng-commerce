@@ -49,6 +49,8 @@ namespace API
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "API v1"));
             }
 
+            app.UseStatusCodePagesWithReExecute("/errors/{0}"); //maps errors to the error controller
+
             app.UseHttpsRedirection(); //forces 301 redirect to https
 
             app.UseRouting();
