@@ -35,11 +35,6 @@ namespace API
                 options.UseSqlite(_config.GetConnectionString("DefaultConnection"));
             });
 
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
-            });
-
             services.AddAutoMapper(typeof(Mappings));
             services.Configure<ApiBehaviorOptions>(config =>
             {
@@ -57,6 +52,19 @@ namespace API
 
                     return new BadRequestObjectResult(errorResponse);
                 };
+            });
+
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "API", Version = "v1" });
+            });
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy", policy =>
+                {
+                    policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("https://localhost:4200");
+                });
             });
         }
 
@@ -77,6 +85,7 @@ namespace API
 
             app.UseRouting();
             app.UseStaticFiles(); //allows serving from wwwroot
+            app.UseCors("CorsPolicy");
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
