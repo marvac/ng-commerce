@@ -19,7 +19,7 @@ namespace Infrastructure.Data
                 {
                     var data = File.ReadAllText("../Infrastructure/Data/Seeds/brands.json");
                     var objs = JsonSerializer.Deserialize<List<ProductBrand>>(data);
-                    await context.ProductBrands.AddRangeAsync(objs);
+                    context.ProductBrands.AddRange(objs);
                     await context.SaveChangesAsync();
                 }
 
@@ -27,7 +27,7 @@ namespace Infrastructure.Data
                 {
                     var data = File.ReadAllText("../Infrastructure/Data/Seeds/types.json");
                     var objs = JsonSerializer.Deserialize<List<ProductType>>(data);
-                    await context.ProductTypes.AddRangeAsync(objs);
+                    context.ProductTypes.AddRange(objs);
                     await context.SaveChangesAsync();
                 }
 
@@ -35,7 +35,7 @@ namespace Infrastructure.Data
                 {
                     var data = File.ReadAllText("../Infrastructure/Data/Seeds/products.json");
                     var objs = JsonSerializer.Deserialize<List<Product>>(data);
-                    await context.Products.AddRangeAsync(objs);
+                    context.Products.AddRange(objs);
                     await context.SaveChangesAsync();
                 }
             }
