@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Threading.Tasks;
+﻿using System.Net;
 
 namespace API.Errors
 {
@@ -30,7 +26,7 @@ namespace API.Errors
                 400 => "Client error",
                 404 => "Resource not found",
                 500 => "Server error",
-             
+
                 _ => "Some other type of error",
             };
         }

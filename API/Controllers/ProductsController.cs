@@ -1,14 +1,13 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
+using API.DTOs;
+using API.Errors;
+using AutoMapper;
 using Core.Entities;
-using Microsoft.AspNetCore.Mvc;
 using Core.Interfaces;
 using Core.Specifications;
-using API.DTOs;
-using AutoMapper;
-using API.Errors;
-using System.Net;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace API.Controllers
 {
@@ -20,8 +19,8 @@ namespace API.Controllers
         private readonly IMapper _mapper;
 
         public ProductsController(
-            IGenericRepository<Product> productRepo, 
-            IGenericRepository<ProductBrand> productBrandRepo, 
+            IGenericRepository<Product> productRepo,
+            IGenericRepository<ProductBrand> productBrandRepo,
             IGenericRepository<ProductType> productTypeRepo,
             IMapper mapper)
         {
@@ -32,9 +31,9 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IReadOnlyList<ProductToReturnDTO>>> GetProducts()
+        public async Task<ActionResult<IReadOnlyList<ProductToReturnDTO>>> GetProducts(string sort)
         {
-            var spec = new ProductsWithTypesAndBrandsSpecification();
+            var spec = new ProductsWithTypesAndBrandsSpecification(sort);
             var products = await _productRepo.ListAsync(spec);
             var productsDTO = _mapper.Map<IReadOnlyList<ProductToReturnDTO>>(products);
             return Ok(productsDTO);

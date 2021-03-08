@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using System.Linq;
 
@@ -18,6 +17,7 @@ namespace API
     public class Startup
     {
         private readonly IConfiguration _config;
+
         public Startup(IConfiguration config)
         {
             _config = config;
