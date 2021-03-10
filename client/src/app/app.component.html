@@ -1,2 +1,7 @@
-<p>AppComponent here</p>
-<router-outlet></router-outlet>
+<app-navbar></app-navbar>
+<div class="container" id="main-container">
+    <div *ngFor="let prod of products">
+        <span>{{prod.name}}}</span>
+    </div>
+    <router-outlet></router-outlet>
+</div>
