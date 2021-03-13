@@ -18,6 +18,9 @@ namespace Core.Specifications
             {
                 switch (productParams.Sort)
                 {
+                    case "name":
+                        AddOrderBy(p => p.Name);
+                        break;
                     case "priceAsc":
                             AddOrderBy(p => p.Price);
                         break;
