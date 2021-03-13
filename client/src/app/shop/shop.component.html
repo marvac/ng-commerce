@@ -12,22 +12,19 @@
         <div class="mb-3">
             <h5 class="text-warning ml-3">Brands</h5>
             <ul class="list-group">
-                <li class="list-group-item active">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Morbi leo risus</li>
-                <li class="list-group-item">Porta ac consectetur ac</li>
-                <li class="list-group-item">Vestibulum at eros</li>
+                <li class="list-group-item" *ngFor="let brand of brands"
+                    [class.active]="brand.id === this.selectedBrandId" 
+                    [value]="brand.id"
+                    (click)="onBrandSelected(brand.id)">{{brand.name}}</li>
             </ul>
         </div>
 
         <div class="mb-3">
             <h5 class="text-warning ml-3">Types</h5>
             <ul class="list-group">
-                <li class="list-group-item active">Cras justo odio</li>
-                <li class="list-group-item">Dapibus ac facilisis in</li>
-                <li class="list-group-item">Morbi leo risus</li>
-                <li class="list-group-item">Porta ac consectetur ac</li>
-                <li class="list-group-item">Vestibulum at eros</li>
+                <li class="list-group-item" *ngFor="let type of types" [class.active]="type.id === this.selectedTypeId"
+                    [value]="type.id"
+                    (click)="onTypeSelected(type.id)">{{type.name}}</li>
             </ul>
         </div>
     </section>
