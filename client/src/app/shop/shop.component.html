@@ -27,19 +27,11 @@
     </section>
     <section class="col-9">
         <div class="d-flex justify-content-between align-items-center mb-3">
-            <header>
-                <span *ngIf="totalCount && totalCount > 0">
-                    Showing
-                    <strong>{{(shopParams.pageNumber - 1) * shopParams.pageSize + 1}}</strong>
-                    -
-                    <strong>{{(shopParams.pageNumber * shopParams.pageSize) > this.totalCount ? this.totalCount : (shopParams.pageNumber * shopParams.pageSize)}}</strong>
-                    of
-                    <strong>{{this.totalCount}}</strong>
-                    results</span>
-                    <span *ngIf="totalCount < 1">
-                    There are <strong>0</strong> results for this filter
-                    </span>
-            </header>
+          <app-paging-header 
+          [totalCount]="totalCount"
+          [pageSize]="shopParams.pageSize"
+          [pageNumber]="shopParams.pageNumber"
+          ></app-paging-header>
             <div class="form-inline">
                 <input type="text" class="form-control mr-2" placeholder="Search">
                 <button class="btn btn-primary mr-2">Search</button>
@@ -53,6 +45,12 @@
             </div>
         </div>
 
+        <app-paging-header 
+        class="d-flex justify-content-center mb-2"
+        [totalCount]="totalCount"
+        [pageSize]="shopParams.pageSize"
+        [pageNumber]="shopParams.pageNumber"
+        ></app-paging-header>
         <div class="d-flex justify-content-center" *ngIf="totalCount && totalCount > 0">
             <pagination [boundaryLinks]="true" [totalItems]="this.totalCount" (pageChanged)="onPageChanged($event)"
                 [itemsPerPage]="shopParams.pageSize" previousText="&lsaquo;" nextText="&rsaquo;" firstText="&laquo;"
