@@ -22,7 +22,10 @@ export class ShopService {
     if (shopParams.typeId !== 0) {
       params = params.append('typeId', shopParams.typeId.toString());
     }
-    
+    if (shopParams.searchText) {
+      params = params.append('searchText', shopParams.searchText);
+    }
+
     params = params.append('sort', shopParams.sorting);
     params = params.append('pageIndex', shopParams.pageNumber.toString());
     params = params.append('pageSize', shopParams.pageSize.toString());

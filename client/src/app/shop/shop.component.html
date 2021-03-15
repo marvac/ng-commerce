@@ -33,9 +33,9 @@
           [pageNumber]="shopParams.pageNumber"
           ></app-paging-header>
             <div class="form-inline">
-                <input type="text" class="form-control mr-2" placeholder="Search">
-                <button class="btn btn-primary mr-2">Search</button>
-                <button class="btn btn-secondary">Reset</button>
+                <input #searchInput (keyup.enter)="onSearch()" type="text" class="form-control mr-2" placeholder="Search">
+                <button (click)="onSearch()" class="btn btn-primary mr-2">Search</button>
+                <button (click)="onReset()" class="btn btn-secondary">Reset</button>
             </div>
         </div>
 
