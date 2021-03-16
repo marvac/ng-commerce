@@ -2,6 +2,13 @@
     max-height: 70px;
     border: 1px solid #ccc;
     border-radius: 10px;
+    cursor: pointer;
+    &:hover {
+        border: 1px solid #333;
+    }
+    &:focus {
+        outline: none;
+    }
 }
 
 #cart-badge {
@@ -15,4 +22,13 @@
     text-align: center;
     top: -12px;
     right: 32px;
+}
+
+a {
+    text-decoration: none;
+    color: #343A40;
+    
+    &.active {
+        color: orange;
+    }
 }
