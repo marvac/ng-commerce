@@ -5,14 +5,33 @@ import {
   HttpEvent,
   HttpInterceptor
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
+import { Router } from '@angular/router';
+import { catchError } from 'rxjs/operators';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
 
-  constructor() {}
+  constructor(private router: Router, private toastr: ToastrService) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    return next.handle(request);
+    return next.handle(request).pipe(
+      catchError(error => {
+        if (error) {
+          if (error.status == 404) {
+            this.router.navigateByUrl('/not-found');
+          }
+          else if (error.status == 500) {
+            this.router.navigateByUrl('/server-error');
+          }
+          else {
+            this.toastr.error(error.error.message, error.error.statusCode);
+          }
+        }
+
+        return throwError(error);
+      })
+    );
   }
 }
