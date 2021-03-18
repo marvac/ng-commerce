@@ -19,7 +19,7 @@ namespace API.Errors
             Message = message ?? GetStatusMessage((int)statusCode);
         }
 
-        private string GetStatusMessage(int statusCode)
+        private static string GetStatusMessage(int statusCode)
         {
             return statusCode switch
             {
