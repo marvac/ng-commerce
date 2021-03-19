@@ -6,13 +6,15 @@ import { TestErrorComponent } from './test-error/test-error.component';
 import { ServerErrorComponent } from './server-error/server-error.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ToastrModule } from 'ngx-toastr';
+import { SectionHeaderComponent } from './section-header/section-header.component';
 
 @NgModule({
   declarations: [
     NavbarComponent,
     TestErrorComponent,
     ServerErrorComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    SectionHeaderComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +25,8 @@ import { ToastrModule } from 'ngx-toastr';
     })
   ],
   exports: [
-    NavbarComponent
+    NavbarComponent,
+    SectionHeaderComponent
   ],
 })
 export class CoreModule { }
