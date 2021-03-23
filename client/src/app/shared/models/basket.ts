@@ -15,6 +15,12 @@ export interface BasketItem {
     type: string;
 }
 
+export interface BasketTotals {
+    shippingCost: number;
+    subtotal: number;
+    total: number;
+}
+
 export class BasketImpl implements Basket {
     id = uuidv4();
     items: BasketItem[] = [];
