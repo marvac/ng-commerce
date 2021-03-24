@@ -1,5 +1,7 @@
+<div class="container">
 <div class="d-flex flex-column flex-md-row align-items-center justify-content-between p-3 px-md-4 bg-white border-bottom box-shadow">
-    <img id="nav-logo" src="/assets/images/logo.png" [routerLink]="['/']">
+
+      <img id="nav-logo" src="/assets/images/logo.png" [routerLink]="['/']">
     <nav class="my-2 my-md-0 mr-md-3 text-uppercase">
       <a class="p-2" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
       <a class="p-2" routerLink="/shop" routerLinkActive="active">Shop</a>
@@ -10,8 +12,9 @@
             <i class="fa fa-shopping-cart fa-2x text-dark mr-5"></i>
             <div *ngIf="(basketService.basket$ | async) as basket" id="cart-badge">{{basket.items.length}}</div>
         </a>
-        <a class="btn btn-outline-secondary mr-2">Login</a>
+        <a class="btn btn-primary text-light mr-2">Login</a>
         <a class="btn btn-outline-primary mr-3">Sign up</a>
+    </div>
     </div>
 
   </div>
