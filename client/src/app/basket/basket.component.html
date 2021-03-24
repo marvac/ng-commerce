@@ -49,15 +49,17 @@
                                         <td class="align-middle">{{item.price | currency}}</td>
                                         <td class="align-middle">
                                             <div class="d-flex align-items-center">
-                                                <i class="fa fa-minus-circle text-danger qty-selector m-2"></i>
-                                                <span class="qty-display">{{item.quantity}}</span>
-                                                <i class="fa fa-plus-circle text-success qty-selector mx-2"></i>
+                                                <i class="fa fa-minus-circle text-danger qty-selector"
+                                                (click)="basketService.decrementItemQuantity(item)"></i>
+                                                <span class="qty-display mx-3"><strong>{{item.quantity}}</strong></span>
+                                                <i class="fa fa-plus-circle text-success qty-selector"
+                                                (click)="basketService.incrementItemQuantity(item)"></i>
                                             </div>
                                         </td>
                                         <td class="align-middle">{{item.price * item.quantity | currency}}</td>
                                         <td class="align-middle text-center">
                                             <a class="text-danger">
-                                                <i class="fa fa-trash remove-icon"></i>
+                                                <i class="fa fa-trash remove-icon" (click)="basketService.removeItemFromBasket(item)"></i>
                                             </a>
                                         </td>
                                     </tr>
