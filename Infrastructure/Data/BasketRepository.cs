@@ -34,6 +34,7 @@ namespace Infrastructure.Data
             return JsonSerializer.Deserialize<CustomerBasket>(data);
         }
 
+
         public async Task<CustomerBasket> UpdateBasketAsync(CustomerBasket basket)
         {
             var serialized = JsonSerializer.Serialize(basket);
