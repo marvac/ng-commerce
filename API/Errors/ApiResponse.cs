@@ -23,11 +23,12 @@ namespace API.Errors
         {
             return statusCode switch
             {
-                400 => "Client error",
+                400 => "Generic client error",
+                401 => "You are not authorized to view this resource",
                 404 => "Resource not found",
-                500 => "Server error",
+                500 => "Generic server error",
 
-                _ => "Some other type of error",
+                _ => $"Some other type of error ({statusCode})",
             };
         }
     }
