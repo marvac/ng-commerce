@@ -1,4 +1,5 @@
 ﻿using API.Errors;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -9,7 +10,7 @@ namespace API.Controllers
     public class FailController : BaseApiController
     {
         [HttpGet("{code}")]
-        public IActionResult ReturnCode(string code)
+        public ActionResult ReturnCode(string code)
         {
             if (int.TryParse(code, out int statusCode))
             {
@@ -17,6 +18,13 @@ namespace API.Controllers
             }
 
             return StatusCode(500, new ApiResponse(500, $"Unknown status code: {code}"));
+        }
+
+        [Authorize]
+        [HttpGet("auth")]
+        public ActionResult<string> TestAuthentication()
+        {
+            return "Authentication passed";
         }
 
     }
