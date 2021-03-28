@@ -13,8 +13,8 @@ namespace API.Controllers
 {
     public class AuthController : BaseApiController
     {
-        private UserManager<AppUser> _userManager;
-        private SignInManager<AppUser> _signInManager;
+        private readonly UserManager<AppUser> _userManager;
+        private readonly SignInManager<AppUser> _signInManager;
 
         public AuthController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
         {
