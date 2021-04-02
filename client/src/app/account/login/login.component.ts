@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { User } from 'src/app/shared/models/user';
 import { AccountService } from '../account.service';
 
@@ -9,9 +10,9 @@ import { AccountService } from '../account.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-loginForm: FormGroup;
+  loginForm: FormGroup;
 
-  constructor(private accountService: AccountService) { }
+  constructor(private accountService: AccountService, private router: Router) { }
 
   ngOnInit(): void {
     this.createLoginForm();
@@ -25,11 +26,11 @@ loginForm: FormGroup;
   }
 
   onSubmit() {
-this.accountService.login(this.loginForm.value).subscribe(() => {
-console.log("done");
-}, error => {
-  console.log(error);
-});
+    this.accountService.login(this.loginForm.value).subscribe(() => {
+      this.router.navigateByUrl('/shop');
+    }, error => {
+      console.log(error);
+    });
 
 
   }

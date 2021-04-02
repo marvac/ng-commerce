@@ -24,6 +24,10 @@
     right: 32px;
 }
 
+.dropdown-toggle .dropdown-menu .dropdown-item {
+    cursor: pointer;
+}
+
 a {
     text-decoration: none;
     color: #343A40;

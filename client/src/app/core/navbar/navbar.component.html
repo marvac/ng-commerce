@@ -1,5 +1,6 @@
 <div class="container-fluid">
-  <div class="d-flex flex-column flex-md-row align-items-center justify-content-between p-3 px-md-4 bg-white border-bottom box-shadow">
+  <div
+    class="d-flex flex-column flex-md-row align-items-center justify-content-between p-3 px-md-4 bg-white border-bottom box-shadow">
 
     <img id="nav-logo" src="/assets/images/logo.png" [routerLink]="['/']">
     <nav class="my-2 my-md-0 mr-md-3 text-uppercase">
@@ -12,8 +13,32 @@
         <i class="fa fa-shopping-cart fa-2x text-dark mr-5"></i>
         <div *ngIf="(basketService.basket$ | async) as basket" id="cart-badge">{{basket.items.length}}</div>
       </a>
-      <a class="btn btn-primary text-light mr-2" routerLink='/account/login'>Login</a>
-      <a class="btn btn-outline-primary mr-3" routerLink='/account/register'>Sign up</a>
+
+      <ng-container *ngIf="(accountService.currentUser$ | async) as user">
+        <div class="dropdown ml-3 mr-5" dropdown>
+          <a class="dropdown-toggle" dropdownToggle>
+            Logged in as: {{user.displayName}}
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" *dropdownMenu>
+            <a routerLink="/basket" class="dropdown-item d-flex align-items-center py-2">
+              <i class="fa fa-shopping-cart mr-3"></i> View Basket
+            </a>
+            <a class="/orders" class="dropdown-item d-flex align-items-center py-2">
+              <i class="fa fa-history mr-3"></i> View Orders
+            </a>
+            <div class="dropdown-divider"></div>
+            <a (click)="accountService.logout()" class="dropdown-item d-flex align-items-center py-2">
+              <i class="fa fa-sign-out mr-3"></i> Logout
+            </a>
+          </div>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="(accountService.currentUser$ | async) === null">
+        <a class="btn btn-primary text-light mr-2" routerLink='/account/login'>Login</a>
+        <a class="btn btn-outline-primary mr-3" routerLink='/account/register'>Sign up</a>
+      </ng-container>
+
     </div>
   </div>
 
