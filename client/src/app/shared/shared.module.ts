@@ -6,12 +6,14 @@ import { PagingHeaderComponent } from './components/paging-header/paging-header.
 import { PagingControlComponent } from './components/paging-control/paging-control.component';
 import { OrderTotalsComponent } from './components/order-totals/order-totals.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { TextInputComponent } from './components/text-input/text-input.component';
 
 @NgModule({
   declarations: [
     PagingHeaderComponent,
     PagingControlComponent,
-    OrderTotalsComponent
+    OrderTotalsComponent,
+    TextInputComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +27,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     PagingHeaderComponent,
     ReactiveFormsModule,
     OrderTotalsComponent,
-    BsDropdownModule
+    BsDropdownModule,
+    TextInputComponent
   ]
 })
 export class SharedModule { }
