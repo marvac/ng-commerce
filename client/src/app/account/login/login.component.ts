@@ -11,6 +11,7 @@ import { AccountService } from '../account.service';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+  errors: string[] = [];
 
   constructor(private accountService: AccountService, private router: Router) { }
 
@@ -33,8 +34,7 @@ export class LoginComponent implements OnInit {
       this.router.navigateByUrl('/shop');
     }, error => {
       console.log(error);
+      this.errors = error.errors;
     });
-
-
   }
 }
