@@ -5,6 +5,11 @@ namespace Core.Entities.OrderAggregate
 {
     public class Order : EntityBase
     {
+        public Order()
+        {
+
+        }
+
         public Order(string buyerEmail, Address shipToAddress, DeliveryMethod deliveryMethod, IReadOnlyList<OrderItem> orderItems, decimal subtotal)
         {
             BuyerEmail = buyerEmail;
