@@ -1,6 +1,7 @@
 ﻿using Core.Entities.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
@@ -24,6 +25,12 @@ namespace API.Helpers
             return (await userManager.Users
                 .Include(x => x.Address)
                 .FirstOrDefaultAsync(x => x.Email == email))?.Address;
+        }
+
+        public static string GetEmailFromPrincipal(this ClaimsPrincipal user)
+        {
+            //return user?.Claims?.FirstOrDefault(x => x.Type == ClaimTypes.Email)?.Value;
+            return user.FindFirstValue(ClaimTypes.Email);
         }
     }
 }
