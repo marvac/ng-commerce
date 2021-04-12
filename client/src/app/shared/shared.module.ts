@@ -7,17 +7,21 @@ import { PagingControlComponent } from './components/paging-control/paging-contr
 import { OrderTotalsComponent } from './components/order-totals/order-totals.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TextInputComponent } from './components/text-input/text-input.component';
+import { CdkStepperModule } from '@angular/cdk/stepper';
+import { StepperComponent } from './components/stepper/stepper.component';
 
 @NgModule({
   declarations: [
     PagingHeaderComponent,
     PagingControlComponent,
     OrderTotalsComponent,
-    TextInputComponent
+    TextInputComponent,
+    StepperComponent
   ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
+    CdkStepperModule,
     PaginationModule.forRoot(),
     BsDropdownModule.forRoot()
   ],
@@ -28,7 +32,9 @@ import { TextInputComponent } from './components/text-input/text-input.component
     ReactiveFormsModule,
     OrderTotalsComponent,
     BsDropdownModule,
-    TextInputComponent
+    TextInputComponent,
+    CdkStepperModule,
+    StepperComponent
   ]
 })
 export class SharedModule { }
