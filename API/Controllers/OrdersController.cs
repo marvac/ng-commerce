@@ -41,15 +41,15 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IReadOnlyList<Order>>> GetOrdersForUser()
+        public async Task<ActionResult<IReadOnlyList<OrderToReturnDTO>>> GetOrdersForUser()
         {
             var email = HttpContext.User.GetEmailFromPrincipal();
             var orders = await _orderService.GetOrdersForUserAsync(email);
-            return Ok(orders);
+            return Ok(_mapper.Map<IReadOnlyList<OrderToReturnDTO>>(orders));
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<IReadOnlyList<Order>>> GetOrderForUser(int id)
+        public async Task<ActionResult<OrderToReturnDTO>> GetOrderForUser(int id)
         {
             var email = HttpContext.User.GetEmailFromPrincipal();
             var order = await _orderService.GetOrderByIdAsync(id, email);
@@ -59,7 +59,7 @@ namespace API.Controllers
                 return NotFound(new ApiResponse(404, "Order not found"));
             }
 
-            return Ok(order);
+            return Ok(_mapper.Map<OrderToReturnDTO>(order));
         }
 
         [HttpGet("deliveryMethods")]
