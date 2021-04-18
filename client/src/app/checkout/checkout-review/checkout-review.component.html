@@ -1,1 +1,8 @@
-<p>checkout-review works!</p>
+<div *ngIf="(basketService.basket$ | async) as basket">
+    <div class="pb-5">
+        <div class="pb-5 my-2">
+            <app-basket-summary [basket]="basket" hideButtons="true"></app-basket-summary>
+        </div>
+    </div>
+
+</div>

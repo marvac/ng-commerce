@@ -9,11 +9,11 @@ import { BasketService } from './basket.service';
   styleUrls: ['./basket.component.scss']
 })
 export class BasketComponent implements OnInit {
-  //basket$: Observable<Basket>;
+
   constructor(public basketService: BasketService) { }
 
   ngOnInit(): void {
-    //this.basket$ = this.basketService.basket$;
+
   }
 
 }
