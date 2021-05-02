@@ -1,60 +1,62 @@
-<div class="table-responsive">
-    <table class="table">
-        <thead>
-            <tr>
-                <th class="border-0 bg-light" scope="col">
-                    <div class="p-2 px-3 text-uppercase">Product</div>
-                </th>
-                <th class="border-0 bg-light" scope="col">
-                    <div class="py-2 text-uppercase">Price</div>
-                </th>
-                <th class="border-0 bg-light" scope="col">
-                    <div class="py-2 text-uppercase">Qty.</div>
-                </th>
-                <th class="border-0 bg-light" scope="col">
-                    <div class="py-2 text-uppercase">Total</div>
-                </th>
-                <th class="border-0 bg-light" scope="col" *ngIf="!hideButtons">
-                    <div class="py-2 text-uppercase">Remove</div>
-                </th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let item of basket.items">
-                <th scope="row">
-                    <div class="p-2">
-                        <img class="img-fluid cart-image" src="{{item.imageUrl}}"
-                            alt="{{item.productName}}">
-                        <div class="ml-3 d-inline-block align-middle">
-                            <h5 class="mb-0">
-                                <a routerLink="/shop/{{item.id}}"
-                                    class="text-dark">{{item.productName}}</a>
-                            </h5>
-                            <span
-                                class="text-muted font-weight-normal font-italic d-block">Type:
-                                {{item.type}}</span>
+<ng-container *ngIf="basketService.basket$ | async">
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="border-0 bg-light" scope="col">
+                        <div class="p-2 px-3 text-uppercase">Product</div>
+                    </th>
+                    <th class="border-0 bg-light" scope="col">
+                        <div class="py-2 text-uppercase">Price</div>
+                    </th>
+                    <th class="border-0 bg-light" scope="col">
+                        <div class="py-2 text-uppercase">Qty.</div>
+                    </th>
+                    <th class="border-0 bg-light" scope="col">
+                        <div class="py-2 text-uppercase">Total</div>
+                    </th>
+                    <th class="border-0 bg-light" scope="col" *ngIf="!hideButtons">
+                        <div class="py-2 text-uppercase">Remove</div>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of basket.items">
+                    <th scope="row">
+                        <div class="p-2">
+                            <img class="img-fluid cart-image" src="{{item.imageUrl}}"
+                                alt="{{item.productName}}">
+                            <div class="ml-3 d-inline-block align-middle">
+                                <h5 class="mb-0">
+                                    <a routerLink="/shop/{{item.id}}"
+                                        class="text-dark">{{item.productName}}</a>
+                                </h5>
+                                <span
+                                    class="text-muted font-weight-normal font-italic d-block">Type:
+                                    {{item.type}}</span>
+                            </div>
                         </div>
-                    </div>
-                </th>
-                <td class="align-middle">{{item.price | currency}}</td>
-                <td class="align-middle">
-                    <div class="d-flex align-items-center">
-                        <i class="fa fa-minus-circle text-danger qty-selector"
-                        (click)="basketService.decrementItemQuantity(item)"
-                        *ngIf="!hideButtons"></i>
-                        <span class="qty-display mx-3"><strong>{{item.quantity}}</strong></span>
-                        <i class="fa fa-plus-circle text-success qty-selector"
-                        (click)="basketService.incrementItemQuantity(item)"
-                        *ngIf="!hideButtons"></i>
-                    </div>
-                </td>
-                <td class="align-middle">{{item.price * item.quantity | currency}}</td>
-                <td class="align-middle text-center" *ngIf="!hideButtons">
-                    <a class="text-danger">
-                        <i class="fa fa-trash remove-icon" (click)="basketService.removeItemFromBasket(item)"></i>
-                    </a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+                    </th>
+                    <td class="align-middle">{{item.price | currency}}</td>
+                    <td class="align-middle">
+                        <div class="d-flex align-items-center">
+                            <i class="fa fa-minus-circle text-danger qty-selector"
+                            (click)="basketService.decrementItemQuantity(item)"
+                            *ngIf="!hideButtons"></i>
+                            <span class="qty-display mx-3"><strong>{{item.quantity}}</strong></span>
+                            <i class="fa fa-plus-circle text-success qty-selector"
+                            (click)="basketService.incrementItemQuantity(item)"
+                            *ngIf="!hideButtons"></i>
+                        </div>
+                    </td>
+                    <td class="align-middle">{{item.price * item.quantity | currency}}</td>
+                    <td class="align-middle text-center" *ngIf="!hideButtons">
+                        <a class="text-danger">
+                            <i class="fa fa-trash remove-icon" (click)="basketService.removeItemFromBasket(item)"></i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</ng-container>
