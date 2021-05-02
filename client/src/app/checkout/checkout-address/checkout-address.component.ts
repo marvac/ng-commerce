@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { AccountService } from 'src/app/account/account.service';
+import { OrderToCreate } from 'src/app/shared/models/order';
 
 @Component({
   selector: 'app-checkout-address',
@@ -23,5 +24,4 @@ export class CheckoutAddressComponent implements OnInit {
       console.log(error);
     });
   }
-
 }
