@@ -9,10 +9,10 @@ import { OrderToCreate } from '../shared/models/order';
   providedIn: 'root'
 })
 export class CheckoutService {
-baseUrl= environment.apiUrl;
+  baseUrl = environment.apiUrl;
   constructor(private http: HttpClient) { }
 
-  getDeliveryMethods(){
+  getDeliveryMethods() {
     return this.http.get(`${this.baseUrl}/orders/deliveryMethods`).pipe(
       map((deliveryMethods: DeliveryMethod[]) => {
         return deliveryMethods.sort((a, b) => b.price - a.price);

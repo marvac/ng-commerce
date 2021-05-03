@@ -4,15 +4,6 @@
         <h2>Your order is confirmed</h2>
     </div>
 
-    <div *ngIf="order">
-        <p>{{order.buyerEmail}}</p>
-        <p>{{order.total | currency}}</p>
-
-        <div *ngFor="let item of order.orderItems">
-            <p>{{item.productName}}</p>
-            <p>{{item.quantity}}x @ {{item.price | currency}} each</p>
-            <br>
-        </div>
-
-    </div>
+    <button *ngIf="order" routerLink="/orders/{{order?.id}}" class="btn btn-outline-success">View your order</button>
+    <button *ngIf="!order" routerLink="/orders" class="btn btn-outline-success">View your orders</button>
 </div>
